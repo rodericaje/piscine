@@ -25,6 +25,15 @@ def cmd_nageur(liste):
         if elt[0]== tmp:
             print(f" {elt[1]:8}|  {elt[2]}")
 
+def cmd_nage(liste):
+    """Affiche toutes les performances suivant une nage donnée"""
+    tmp = input("Quel nage ? ")
+    print("Nage ", tmp)
+    print(" Nageur     |  longueur")
+    print("------------------------")
+    for elt in liste:
+        if elt[1]== tmp:
+            print(f" {elt[0]:11}|  {elt[2]}")
 
 def cmd_exit():
     tmp = input("En êtes-vous sûr ? (o)ui/(n)on ")
@@ -47,6 +56,10 @@ while isAlive:
 
     if commande == 'nageur':
         cmd_nageur(liste)
+        continue
+
+    if commande == 'nage':
+        cmd_nage(liste)
         continue
 
     if commande == 'exit':
