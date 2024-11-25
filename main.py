@@ -10,8 +10,10 @@ def cmd_ajout(liste):
 
 def cmd_liste(liste):
     """Affiche toutes les performances des nageurs"""
+    print("Prénom      |  nage   |  longueur")
+    print("---------------------------------")
     for elt in liste:
-        print(f"Prénom {elt[0]}, nage {elt[1]}, longueur {elt[2]}")
+        print(f" {elt[0]:11}| {elt[1]:8}|  {elt[2]}")
 
 
 def cmd_exit():
