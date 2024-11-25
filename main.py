@@ -14,6 +14,13 @@ def cmd_liste(liste):
         print(f"Prénom {elt[0]}, nage {elt[1]}, longueur {elt[2]}")
 
 
+def cmd_exit():
+    tmp = input("En êtes-vous sûr ? (o)ui/(n)on ")
+    if tmp == 'o':
+        return False
+    else:
+        return True
+
 isAlive = True
 while isAlive:
     commande = input("Que faut-il faire ? ")
@@ -27,9 +34,7 @@ while isAlive:
         continue
 
     if commande == 'exit':
-        tmp = input("En êtes-vous sûr ? (o)ui/(n)on")
-        if tmp == 'o':
-            isAlive = False
+        isAlive = cmd_exit()
         continue
 
     print(f"Commande {commande} inconnue")
