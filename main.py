@@ -3,6 +3,14 @@ listeNageur = []
 listeNages = []
 commande = ''
 
+
+def cmd_individu(listeNageur):
+    """Ajoute un nouveau najeur"""
+    prénom = input("Prénom du nouveau nageur ? ")
+    id = len(listeNageur)+1
+    listeNageur.append( (id,prénom ))
+    print(listeNageur)
+
 def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
     a = input("Qui nage ? ")
@@ -74,7 +82,10 @@ while isAlive:
     if commande == 'ajout':
         cmd_ajout(liste)
         continue
-   
+    if commande == 'individu':
+        cmd_individu(listeNageur)
+        continue
+
     if commande == 'liste':
         cmd_liste(liste)
         continue
