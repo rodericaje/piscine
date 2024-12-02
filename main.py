@@ -1,4 +1,6 @@
 liste = [("Pierre","Dos",10),("Paul","Brasse",13),("Léa","Crawl",6), ("Léa","Brasse",8) ]
+listeNageur = []
+listeNages = []
 commande = ''
 
 def cmd_ajout(liste):
