@@ -42,6 +42,28 @@ def cmd_exit():
     else:
         return True
 
+def cmd_save(liste):
+    '''sauvegarde la BDD'''
+    fichier = open('save.csv', 'w')
+    for elt in liste:
+        fichier.write(elt[0]+','+elt[1]+','+str(elt[2])+"\n")
+    fichier.close()
+
+def cmd_load(liste):
+    'charge la BDD'
+    fichier = open('save.csv', 'r')
+    for line in fichier:
+        line.strip()
+        if line[-1] == '\n':
+            line = line[:-1]
+        if line[0]=='#':
+            continue
+        tmp = line.split(',')
+        liste.append(tuple(tmp))
+    fichier.close()
+
+
+
 isAlive = True
 while isAlive:
     commande = input("Que faut-il faire ? ")
@@ -60,6 +82,14 @@ while isAlive:
 
     if commande == 'nage':
         cmd_nage(liste)
+        continue
+
+    if commande == 'save':
+        cmd_save(liste)
+        continue
+
+    if commande == 'load':
+        cmd_load(liste)
         continue
 
     if commande == 'exit':
