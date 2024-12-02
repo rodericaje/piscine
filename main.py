@@ -42,16 +42,16 @@ def cmd_exit():
     else:
         return True
 
-def cmd_save(liste):
+def cmd_save(liste, filename):
     '''sauvegarde la BDD'''
-    fichier = open('save.csv', 'w')
+    fichier = open(filename, 'w')
     for elt in liste:
         fichier.write(elt[0]+','+elt[1]+','+str(elt[2])+"\n")
     fichier.close()
 
-def cmd_load(liste):
+def cmd_load(liste, filename):
     'charge la BDD'
-    fichier = open('save.csv', 'r')
+    fichier = open(filename, 'r')
     for line in fichier:
         line.strip()
         if line[-1] == '\n':
@@ -85,11 +85,11 @@ while isAlive:
         continue
 
     if commande == 'save':
-        cmd_save(liste)
+        cmd_save(liste, 'save.csv')
         continue
 
     if commande == 'load':
-        cmd_load(liste)
+        cmd_load(liste, 'save.csv')
         continue
 
     if commande == 'exit':
