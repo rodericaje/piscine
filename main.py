@@ -13,7 +13,8 @@ def cmd_individu(listeNageur):
 
 def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
-    a = input("Qui nage ? ")
+    print("liste des nageurs: ", listeNageur)
+    a = input("Nageur n° ? ")
     b = input("quelle nage ? ")
     c = input("combien de longueur ? ")
     liste.append((a,b,c))
