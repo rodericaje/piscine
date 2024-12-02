@@ -35,9 +35,10 @@ def cmd_nage(liste):
         if elt[1]== tmp:
             print(f" {elt[0]:11}|  {elt[2]}")
 
-def cmd_exit():
+def cmd_exit(liste):
     tmp = input("En êtes-vous sûr ? (o)ui/(n)on ")
     if tmp == 'o':
+        cmd_save(liste, 'save.backup')
         return False
     else:
         return True
@@ -93,7 +94,7 @@ while isAlive:
         continue
 
     if commande == 'exit':
-        isAlive = cmd_exit()
+        isAlive = cmd_exit(liste)
         continue
 
     print(f"Commande {commande} inconnue")
