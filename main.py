@@ -1,6 +1,6 @@
-liste = [("Pierre","Dos",10),("Paul","Brasse",13),("Léa","Crawl",6), ("Léa","Brasse",8) ]
-listeNageur = []
-listeNages = []
+liste = [(1,3,10),(2,1,13),(3,2,6), (3,1,8) ]
+listeNageur = [(1, "Pierre"), (2, "Paul"), (3, "Léa")]
+listeNages = [(1, 'Brasse'), (2, 'Crawl'), (3, "dos")]
 commande = ''
 
 
