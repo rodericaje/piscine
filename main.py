@@ -38,7 +38,9 @@ def cmd_liste(liste):
 
 def cmd_nageur(liste):
     """Affiche toutes les performances d'un nageur"""
-    tmp = input("Quel nageur ? ")
+    for elt in listeNageur:
+        print(f"{elt[0]:5} : {elt[1]}")
+    tmp = int(input("Quel numéro de nageur ? "))
     print("Performances de ", tmp)
     print("  nage   |  longueur")
     print("--------------------")
@@ -48,7 +50,9 @@ def cmd_nageur(liste):
 
 def cmd_nage(liste):
     """Affiche toutes les performances suivant une nage donnée"""
-    tmp = input("Quel nage ? ")
+    for elt in listeNages:
+        print(f"{elt[0]:5} : {elt[1]}")
+    tmp = int(input("Quel numéro de nage ? "))
     print("Nage ", tmp)
     print(" Nageur     |  longueur")
     print("------------------------")
