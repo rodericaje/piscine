@@ -9,6 +9,7 @@ def get_str_from_num_in_list(num, liste):
     for elt in liste:
         if elt[0]==num:
             return elt[1]
+    #la ligne suivante ne devrait jamais être exécutée
     return "unknown"
 
 
@@ -28,7 +29,6 @@ def cmd_nouvelle_nage(listeNages):
     print(listeNages)
 
 
-
 def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
     for elt in listeNageurs:
@@ -40,6 +40,7 @@ def cmd_ajout(liste):
     c = int(input("combien de longueur ? "))
     liste.append((a,b,c))
 
+
 def cmd_liste(liste):
     """Affiche toutes les performances des nageurs"""
     print("Prénom      |  nage   |  longueur")
@@ -48,6 +49,7 @@ def cmd_liste(liste):
         nageur = get_str_from_num_in_list(elt[0], listeNageurs)
         nage = get_str_from_num_in_list(elt[1], listeNages)
         print(f" {nageur:11}| {nage:8}|  {elt[2]}")
+
 
 def cmd_nageur(liste):
     """Affiche toutes les performances d'un nageur"""
@@ -62,6 +64,7 @@ def cmd_nageur(liste):
             nage = get_str_from_num_in_list(elt[1], listeNages)
             print(f" {nage:8}|  {elt[2]}")
 
+
 def cmd_nage(liste):
     """Affiche toutes les performances suivant une nage donnée"""
     for elt in listeNages:
@@ -75,6 +78,7 @@ def cmd_nage(liste):
             nageur = get_str_from_num_in_list(elt[0], listeNageurs)
             print(f" {nageur:11}|  {elt[2]}")
 
+
 def cmd_exit(liste):
     tmp = input("En êtes-vous sûr ? (o)ui/(n)on ")
     if tmp == 'o':
@@ -83,6 +87,7 @@ def cmd_exit(liste):
     else:
         return True
 
+
 def cmd_save(liste, filename):
     '''sauvegarde la BDD'''
     fichier = open(filename, 'w')
@@ -90,8 +95,9 @@ def cmd_save(liste, filename):
         fichier.write(str(elt[0])+','+str(elt[1])+','+str(elt[2])+"\n")
     fichier.close()
 
+
 def cmd_load(liste, filename):
-    'charge la BDD'
+    '''charge la BDD'''
     fichier = open(filename, 'r')
     for line in fichier:
         line.strip()
@@ -104,7 +110,9 @@ def cmd_load(liste, filename):
     fichier.close()
 
 
-
+#
+#   Programme principal
+#
 isAlive = True
 while isAlive:
     commande = input("Que faut-il faire ? ")
