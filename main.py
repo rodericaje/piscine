@@ -15,69 +15,69 @@ def get_str_from_num_in_list(num, liste):
     return "unknown"
 
 
-def cmd_individu(listeNageur):
+def cmd_individu(param):
     """Ajoute un nouveau najeur"""
     prénom = input("Prénom du nouveau nageur ? ")
-    id = len(listeNageur)+1
-    listeNageur.append( (id,prénom ))
-    print(listeNageur)
+    id = len(param['nageurs'])+1
+    param['nageurs'].append( (id,prénom ))
+    print(param['nageurs'])
 
 
-def cmd_nouvelle_nage(listeNages):
+def cmd_nouvelle_nage(param):
     """Ajoute une nouvelle nage au logiciel"""
     nage = input("Quelle nage enregistrer ? ")
-    id = len(listeNages)+1
-    listeNages.append( (id,nage ))
-    print(listeNages)
+    id = len(param['nages'])+1
+    param['nages'].append( (id,nage ))
+    print(param['nages'])
 
 
-def cmd_ajout(liste):
+def cmd_ajout(param):
     """Ajoute un évènement à la liste"""
-    for elt in listeNageurs:
+    for elt in param['nageurs']:
         print(f"{elt[0]:5} : {elt[1]}")
     a = int(input("Nageur n° ? "))
-    for elt in listeNages:
+    for elt in param['nages']:
         print(f"{elt[0]:5} : {elt[1]}")
     b = int(input("Nage n° ? "))
     c = int(input("combien de longueur ? "))
-    liste.append((a,b,c))
+    param['bdd'].append((a,b,c))
 
 
-def cmd_liste(liste):
+def cmd_liste(param):
     """Affiche toutes les performances des nageurs"""
     print("Prénom      |  nage   |  longueur")
     print("---------------------------------")
-    for elt in liste:
-        nageur = get_str_from_num_in_list(elt[0], listeNageurs)
-        nage = get_str_from_num_in_list(elt[1], listeNages)
+    for elt in param['bdd']:
+        nageur = get_str_from_num_in_list(elt[0], param['nageurs'])
+        nage = get_str_from_num_in_list(elt[1], param['nages'])
         print(f" {nageur:11}| {nage:8}|  {elt[2]}")
 
 
-def cmd_nageur(liste):
+def cmd_nageur(param):
     """Affiche toutes les performances d'un nageur"""
-    for elt in listeNageurs:
+    for elt in param['nageurs']:
         print(f"{elt[0]:5} : {elt[1]}")
     tmp = int(input("Quel numéro de nageur ? "))
     print("Performances de ", tmp)
     print("  nage   |  longueur")
     print("--------------------")
-    for elt in liste:
+    for elt in param['bdd']:
         if elt[0]== tmp:
-            nage = get_str_from_num_in_list(elt[1], listeNages)
+            nage = get_str_from_num_in_list(elt[1], param['nages'])
             print(f" {nage:8}|  {elt[2]}")
 
 
-def cmd_nage(liste):
+def cmd_nage(param):
     """Affiche toutes les performances suivant une nage donnée"""
-    for elt in listeNages:
+    for elt in param['nages']:
         print(f"{elt[0]:5} : {elt[1]}")
     tmp = int(input("Quel numéro de nage ? "))
     print("Nage ", tmp)
     print(" Nageur     |  longueur")
     print("------------------------")
-    for elt in liste:
+    for elt in param['bdd']:
         if elt[1]== tmp:
-            nageur = get_str_from_num_in_list(elt[0], listeNageurs)
+            nageur = get_str_from_num_in_list(elt[0], param['nageurs'])
             print(f" {nageur:11}|  {elt[2]}")
 
 
@@ -120,38 +120,38 @@ while isAlive:
     commande = input("Que faut-il faire ? ")
 
     if commande == 'ajout':
-        cmd_ajout(liste)
+        cmd_ajout(param)
         continue
     if commande == 'individu':
-        cmd_individu(listeNageurs)
+        cmd_individu(param)
         continue
 
     if commande == 'nouvelle nage':
-        cmd_nouvelle_nage(listeNages)
+        cmd_nouvelle_nage(param)
         continue
 
     if commande == 'liste':
-        cmd_liste(liste)
+        cmd_liste(param)
         continue
 
     if commande == 'nageur':
-        cmd_nageur(liste)
+        cmd_nageur(param)
         continue
 
     if commande == 'nage':
-        cmd_nage(liste)
+        cmd_nage(param)
         continue
 
     if commande == 'save':
-        cmd_save(liste, 'save.csv')
+        cmd_save(param, 'save.csv')
         continue
 
     if commande == 'load':
-        cmd_load(liste, 'save.csv')
+        cmd_load(param, 'save.csv')
         continue
 
     if commande == 'exit':
-        isAlive = cmd_exit(liste)
+        isAlive = cmd_exit(param)
         continue
 
     print(f"Commande {commande} inconnue")
