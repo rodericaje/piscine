@@ -68,7 +68,7 @@ def cmd_save(liste, filename):
     '''sauvegarde la BDD'''
     fichier = open(filename, 'w')
     for elt in liste:
-        fichier.write(elt[0]+','+elt[1]+','+str(elt[2])+"\n")
+        fichier.write(str(elt[0])+','+str(elt[1])+','+str(elt[2])+"\n")
     fichier.close()
 
 def cmd_load(liste, filename):
