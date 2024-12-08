@@ -90,10 +90,10 @@ def cmd_nage(param):
             print(f" {nageur:11}|  {elt[2]}")
 
 
-def cmd_exit(liste):
+def cmd_exit(param):
     tmp = input("En êtes-vous sûr ? (o)ui/(n)on ")
     if tmp == 'o':
-        cmd_save(liste, 'save.backup')
+        cmd_save(param, 'save.backup')
         return False
     else:
         return True
