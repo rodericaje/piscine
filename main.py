@@ -64,10 +64,15 @@ def cmd_load(liste, filename):
     fichier.close()
 
 
+def get_cmd():
+    '''Traitement de la commande d'entrée'''
+    msg = input("Que faut-il faire ? ")
+    msg = msg.lower()
+    return msg
 
 isAlive = True
 while isAlive:
-    commande = input("Que faut-il faire ? ")
+    commande = get_cmd()
 
     if commande == 'ajout':
         cmd_ajout(liste)
