@@ -45,7 +45,9 @@ def cmd_liste(liste):
     print("Prénom      |  nage   |  longueur")
     print("---------------------------------")
     for elt in liste:
-        print(f" {elt[0]:11}| {elt[1]:8}|  {elt[2]}")
+        nageur = get_str_from_num_in_list(elt[0], listeNageur)
+        nage = get_str_from_num_in_list(elt[1], listeNages)
+        print(f" {nageur:11}| {nage:8}|  {elt[2]}")
 
 def cmd_nageur(liste):
     """Affiche toutes les performances d'un nageur"""
@@ -57,7 +59,8 @@ def cmd_nageur(liste):
     print("--------------------")
     for elt in liste:
         if elt[0]== tmp:
-            print(f" {elt[1]:8}|  {elt[2]}")
+            nage = get_str_from_num_in_list(elt[1], listeNages)
+            print(f" {nage:8}|  {elt[2]}")
 
 def cmd_nage(liste):
     """Affiche toutes les performances suivant une nage donnée"""
@@ -69,7 +72,8 @@ def cmd_nage(liste):
     print("------------------------")
     for elt in liste:
         if elt[1]== tmp:
-            print(f" {elt[0]:11}|  {elt[2]}")
+            nageur = get_str_from_num_in_list(elt[0], listeNageur)
+            print(f" {nageur:11}|  {elt[2]}")
 
 def cmd_exit(liste):
     tmp = input("En êtes-vous sûr ? (o)ui/(n)on ")
