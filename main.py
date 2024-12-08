@@ -1,5 +1,6 @@
 commande = ''
 
+#default values
 param = {'bdd': [(1,3,10),(2,1,13),(3,2,6), (3,1,8) ],
          'nages': [(1, "Brasse"), (2, "Dos"), (3, "Crawl")],
          'nageurs': [(1, "Pierre"), (2, "Paul"), (3, "Léa")]
@@ -98,7 +99,7 @@ def cmd_exit(liste):
         return True
 
 
-def cmd_save(param, filename):
+def cmd_save(param, filename = 'save.csv'):
     '''sauvegarde complète de la BDD'''
     fichier = open(filename, 'w')
     # sauvegarde des nageurs
@@ -116,7 +117,7 @@ def cmd_save(param, filename):
     fichier.close()
 
 
-def cmd_load(param, filename):
+def cmd_load(param, filename = 'save.csv'):
     '''chargement complet la BDD avec réinitialisation'''
     reset(param)
     key = ''
@@ -174,11 +175,11 @@ while isAlive:
         continue
 
     if commande == 'save':
-        cmd_save(param, 'save.csv')
+        cmd_save(param)
         continue
 
     if commande == 'load':
-        cmd_load(param, 'save.csv')
+        cmd_load(param)
         continue
 
     if commande == 'exit':
