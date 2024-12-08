@@ -1,3 +1,5 @@
+import os
+
 commande = ''
 
 #default values
@@ -148,6 +150,8 @@ def cmd_load(param, filename = 'save.csv'):
 #   Programme principal
 #
 isAlive = True
+if os.path.exists('save.backup'):
+    cmd_load(param, 'save.backup')
 while isAlive:
     commande = input("Que faut-il faire ? ")
 
