@@ -1,7 +1,9 @@
-liste = [(1,3,10),(2,1,13),(3,2,6), (3,1,8) ]
-listeNageurs = [(1, "Pierre"), (2, "Paul"), (3, "Léa")]
-listeNages = [(1, 'Brasse'), (2, 'Crawl'), (3, "dos")]
 commande = ''
+
+param = {'bdd': [(1,3,10),(2,1,13),(3,2,6), (3,1,8) ],
+         'nages': [(1, "Brasse"), (2, "Dos"), (3, "Crawl")],
+         'nageurs': [(1, "Pierre"), (2, "Paul"), (3, "Léa")]
+        }
 
 
 def get_str_from_num_in_list(num, liste):
