@@ -11,6 +11,16 @@ def cmd_individu(listeNageur):
     listeNageur.append( (id,prénom ))
     print(listeNageur)
 
+
+def cmd_nouvelle_nage(listeNages):
+    """Ajoute une nouvelle nage au logiciel"""
+    nage = input("Quelle nage enregistrer ? ")
+    id = len(listeNages)+1
+    listeNages.append( (id,nage ))
+    print(listeNages)
+
+
+
 def cmd_ajout(liste):
     """Ajoute un évènement à la liste"""
     print("liste des nageurs: ", listeNageur)
@@ -85,6 +95,10 @@ while isAlive:
         continue
     if commande == 'individu':
         cmd_individu(listeNageur)
+        continue
+
+    if commande == 'nouvelle nage':
+        cmd_nouvelle_nage(listeNages)
         continue
 
     if commande == 'liste':
