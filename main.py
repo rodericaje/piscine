@@ -146,6 +146,12 @@ def cmd_load(param, filename = 'save.csv'):
     fichier.close()
 
 
+def get_cmd():
+    '''Traitement de la commande d'entrée'''
+    msg = input("Que faut-il faire ? ")
+    msg = msg.lower()
+    return msg
+
 #
 #   Programme principal
 #
@@ -153,7 +159,7 @@ isAlive = True
 if os.path.exists('save.backup'):
     cmd_load(param, 'save.backup')
 while isAlive:
-    commande = input("Que faut-il faire ? ")
+    commande = get_cmd()
 
     if commande == 'ajout':
         cmd_ajout(param)
