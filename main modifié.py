@@ -3,7 +3,7 @@ import os
 commande = ''
 
 #default values
-param = {'bdd': [(1,3,10),(2,1,13),(3,2,6), (3,1,8) ],
+param = {'bdd': [(1,3,10, "2024-05-11"),(2,1,13,"2024-05-13"), (3,2,6, "2024-05-15"), (3,1,8, "2024-05-17") ],
          'nages': [(1, "Brasse"), (2, "Dos"), (3, "Crawl")],
          'nageurs': [(1, "Pierre"), (2, "Paul"), (3, "Léa")]
         }
@@ -56,12 +56,12 @@ def cmd_ajout(param):
 
 def cmd_liste(param):
     """Affiche toutes les performances des nageurs"""
-    print("Prénom      |  nage   |  longueur")
+    print("Prénom      |  nage   |  longueur |  date")
     print("---------------------------------")
     for elt in param['bdd']:
         nageur = get_str_from_num_in_list(elt[0], param['nageurs'])
         nage = get_str_from_num_in_list(elt[1], param['nages'])
-        print(f" {nageur:11}| {nage:8}|  {elt[2]}")
+        print(f" {nageur:11}| {nage:8}|  {elt[2]}| {elt[3]}")
 
 
 def cmd_nageur(param):
@@ -70,12 +70,12 @@ def cmd_nageur(param):
         print(f"{elt[0]:5} : {elt[1]}")
     tmp = int(input("Quel numéro de nageur ? "))
     print("Performances de ", tmp)
-    print("  nage   |  longueur")
+    print("  nage   |  longueur |  date")
     print("--------------------")
     for elt in param['bdd']:
         if elt[0]== tmp:
             nage = get_str_from_num_in_list(elt[1], param['nages'])
-            print(f" {nage:8}|  {elt[2]}")
+            print(f" {nage:8}|  {elt[2]}|  {elt[3]}")
 
 
 def cmd_nage(param):
@@ -84,12 +84,12 @@ def cmd_nage(param):
         print(f"{elt[0]:5} : {elt[1]}")
     tmp = int(input("Quel numéro de nage ? "))
     print("Nage ", tmp)
-    print(" Nageur     |  longueur")
+    print(" Nageur     |  longueur |  date")
     print("------------------------")
     for elt in param['bdd']:
         if elt[1]== tmp:
             nageur = get_str_from_num_in_list(elt[0], param['nageurs'])
-            print(f" {nageur:11}|  {elt[2]}")
+            print(f" {nageur:11}|  {elt[2]}|{elt[3]}")
 
 
 def cmd_exit(param):
@@ -115,7 +115,7 @@ def cmd_save(param, filename = 'save.csv'):
     # sauvegarde des données
     fichier.write('@ bdd\n')
     for elt in param['bdd']:
-        fichier.write(str(elt[0])+','+str(elt[1])+','+str(elt[2])+"\n")
+        fichier.write(str(elt[0])+','+str(elt[1])+','+str(elt[2])+','+str(elt[3])+"\n")
     fichier.close()
 
 
@@ -154,7 +154,15 @@ if os.path.exists('save.backup'):
     cmd_load(param, 'save.backup')
 while isAlive:
     commande = input("Que faut-il faire ? ")
-
+    print(" 1: ajout d'une performance")
+    print(" 2: ajout d'un individu")
+    print(" 3: ajout d'une nouvelle nage")
+    print(" 4: liste toutes les performances")
+    print(" 5: liste les performances d'un nageur")
+    print(" 6: liste tous les nageurs pratiquants une nage")
+    print(" 7: sauvegarde les données utilisateurs")
+    print(" 8: charge les données utilisateurs")
+    print(" 0: quitte le logiciel")
     if commande == '1':
         cmd_ajout(param)
         continue
