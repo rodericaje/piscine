@@ -155,38 +155,38 @@ if os.path.exists('save.backup'):
 while isAlive:
     commande = input("Que faut-il faire ? ")
 
-    if commande == 'ajout':
+    if commande == '1':
         cmd_ajout(param)
         continue
-    if commande == 'individu':
+    if commande == '2':
         cmd_individu(param)
         continue
 
-    if commande == 'nouvelle nage':
+    if commande == '3':
         cmd_nouvelle_nage(param)
         continue
 
-    if commande == 'liste':
+    if commande == '4':
         cmd_liste(param)
         continue
 
-    if commande == 'nageur':
+    if commande == '5':
         cmd_nageur(param)
         continue
 
-    if commande == 'nage':
+    if commande == '6':
         cmd_nage(param)
         continue
 
-    if commande == 'save':
+    if commande == '7':
         cmd_save(param)
         continue
 
-    if commande == 'load':
+    if commande == '8':
         cmd_load(param)
         continue
 
-    if commande == 'exit':
+    if commande == '0':
         isAlive = cmd_exit(param)
         continue
 
