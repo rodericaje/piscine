@@ -145,6 +145,14 @@ def cmd_load(param, filename = 'save.csv'):
         param[key].append(tuple(tmp))
     fichier.close()
 
+def get_int_value():
+        while True:
+            try:
+                msg = int(input("Valeur ? "))
+                return msg
+            except:
+                print("Indiquez bien une valeur numérique")
+
 
 #
 #   Programme principal
@@ -153,7 +161,8 @@ isAlive = True
 if os.path.exists('save.backup'):
     cmd_load(param, 'save.backup')
 while isAlive:
-    commande = input("Que faut-il faire ? ")
+    commande = get_int_value()
+    
     print(" 1: ajout d'une performance")
     print(" 2: ajout d'un individu")
     print(" 3: ajout d'une nouvelle nage")
