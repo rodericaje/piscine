@@ -89,11 +89,21 @@ def cmd_nageur(param):
     print("Performances de ", tmp)
     print("  nage   |  longueur |  date")
     print("--------------------")
+
+    min_longueur = float("inf")
+    max_longueur = 0
+    total = 0
+    count = 0
+
     for elt in param['bdd']:
         if elt[0]== tmp:
             nage = get_str_from_num_in_list(elt[1], param['nages'])
             print(f" {nage:8}|  {elt[2]}|  {elt[3]}")
 
+            if elt[2] < min_longueur:
+                min_longueur = elt [2]
+            if elt [2] > max_longueur:
+                max_longueur = elt[2]
 
 
 def cmd_nage(param):
