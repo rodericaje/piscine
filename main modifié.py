@@ -104,6 +104,14 @@ def cmd_nageur(param):
                 min_longueur = elt [2]
             if elt [2] > max_longueur:
                 max_longueur = elt[2]
+    if count > 0:
+        moyenne = total / count
+        print("\nStatistiques :")
+        print(f"Minimum  : {min_longueur}")
+        print(f"Maximum  : {max_longueur}")
+        print(f"Moyenne  : {moyenne:.1f}")
+    else:
+        print("Aucune performance enregistrée pour ce nageur.")
 
 
 def cmd_nage(param):
