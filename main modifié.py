@@ -1,6 +1,9 @@
 import os
 
 commande = ''
+max_longueur = 0
+min_longueur = float("inf")
+moyenne = 0
 
 #default values
 param = {'bdd': [(1,3,10, "2024-05-11"),(2,1,13,"2024-05-13"), (3,2,6, "2024-05-15"), (3,1,8, "2024-05-17") ],
@@ -66,9 +69,23 @@ def cmd_liste(param):
 
 def cmd_nageur(param):
     """Affiche toutes les performances d'un nageur"""
+    performances = []
+
     for elt in param['nageurs']:
         print(f"{elt[0]:5} : {elt[1]}")
-    tmp = int(input("Quel numéro de nageur ? "))
+
+        while True:
+            try:
+                tmp = int(input("Quel numéro de nageur ? "))
+                break
+            except ValueError:
+                print("veuillez entrer un numéro valide")
+
+    nom_nageur = get_str_from_num_in_list(tmp, param['nageurs'])
+    if nom_nageur == "inconnue":
+        print("Nageur introuvable !")
+        return
+
     print("Performances de ", tmp)
     print("  nage   |  longueur |  date")
     print("--------------------")
@@ -76,6 +93,7 @@ def cmd_nageur(param):
         if elt[0]== tmp:
             nage = get_str_from_num_in_list(elt[1], param['nages'])
             print(f" {nage:8}|  {elt[2]}|  {elt[3]}")
+
 
 
 def cmd_nage(param):
