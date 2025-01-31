@@ -80,6 +80,8 @@ def cmd_nageur(param):
                 break
             except ValueError:
                 print("veuillez entrer un numéro valide")
+            finally:
+                print("Tentative d'entrée de numéro de nageur.")
 
     nom_nageur = get_str_from_num_in_list(tmp, param['nageurs'])
     if nom_nageur == "inconnue":
@@ -104,6 +106,8 @@ def cmd_nageur(param):
                 min_longueur = elt [2]
             if elt [2] > max_longueur:
                 max_longueur = elt[2]
+                total += elt[2]
+                count += 1
     if count > 0:
         moyenne = total / count
         print("\nStatistiques :")
@@ -186,8 +190,11 @@ def get_int_value():
             try:
                 msg = int(input("Valeur ? "))
                 return msg
-            except:
+            except ValueError:
                 print("Indiquez bien une valeur numérique")
+            finally:
+
+             pass
 
 
 #
@@ -208,38 +215,38 @@ while isAlive:
     print(" 7: sauvegarde les données utilisateurs")
     print(" 8: charge les données utilisateurs")
     print(" 0: quitte le logiciel")
-    if commande == '1':
+    if commande == "1":
         cmd_ajout(param)
         continue
-    if commande == '2':
+    if commande == 2:
         cmd_individu(param)
         continue
 
-    if commande == '3':
+    if commande == 3:
         cmd_nouvelle_nage(param)
         continue
 
-    if commande == '4':
+    if commande == 4:
         cmd_liste(param)
         continue
 
-    if commande == '5':
+    if commande == 5:
         cmd_nageur(param)
         continue
 
-    if commande == '6':
+    if commande == 6:
         cmd_nage(param)
         continue
 
-    if commande == '7':
+    if commande == 7:
         cmd_save(param)
         continue
 
-    if commande == '8':
+    if commande == 8:
         cmd_load(param)
         continue
 
-    if commande == '0':
+    if commande == 0:
         isAlive = cmd_exit(param)
         continue
 
